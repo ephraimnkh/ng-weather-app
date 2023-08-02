@@ -1,6 +1,6 @@
 {
   "name": "ng-weather-app",
-  "version": "3.5.0",
+  "version": "1.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,14 +8,16 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "compile-server": "npx tsc server.ts",
-    "proxy:server": "nodemon server.ts",
+    "proxy:server": "npm run compile-server && nodemon server.js",
     "start:dev": "npm run build && npm run compile-server && pm2 start ecosystem.config.js --env development",
     "start:prod": "npm run build && npm run compile-server && pm2 start ecosystem.config.js --env production",
     "stop": "pm2 stop all",
-    "update:major-version": "ts-node package-updater.ts major && npm run push-package-to-git",
-    "update:minor-version": "ts-node package-updater.ts minor && npm run push-package-to-git",
-    "update:patch-version": "ts-node package-updater.ts patch && npm run push-package-to-git",
-    "push-package-to-git": "git commit package.json -m \"Updated package.json to #version [skip ci]\""
+    "update:major-version": "npx ts-node package-updater.ts major && npm run push-package-to-git",
+    "update:minor-version": "npx ts-node package-updater.ts minor && npm run push-package-to-git",
+    "update:patch-version": "npx ts-node package-updater.ts patch && npm run push-package-to-git",
+    "push-package-to-git": "git commit package.json -m \"Updated package.json to $npm_package_version [skip ci]\" && npm run pull:git",
+    "pull:git": "git pull origin",
+    "push:git": "git push origin"
   },
   "private": true,
   "dependencies": {

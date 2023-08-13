@@ -12,4 +12,4 @@ To build and run this app on your machine you'll need to ensure that you have a 
 
 ## Building and running in Docker
 
-To build and run this app on in docker you'll need to ensure that you have a .env (environment file) with the following vital keys OPEN_WEATHER_MAP_API_KEY, DEFAULT_LOCATION_LATITUDE, DEFAULT_LOCATION_LONGITUDE. Then you'll run the app by running `npm run doc:build` then you will run `npm run doc:run:dev` to run the Docker image locally.
+To build and run this app on in docker you'll need to ensure that you have a .env (environment file) with the following vital keys OPEN_WEATHER_MAP_API_KEY, DEFAULT_LOCATION_LATITUDE, DEFAULT_LOCATION_LONGITUDE. Then you'll run the app by running `npm run doc:build` then you will run `npm run doc:run:dev` to run the Docker image locally, you may have to wait a bit before opening [http://localhost:8080](http://localhost:8080) as the app is still building.

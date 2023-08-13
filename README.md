@@ -1,27 +1,15 @@
-# NgWeatherApp
+# Weather App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.9.
+This project is a weather app that provides current temperature data as well as a 3-hourly forecast for the next 5 days. It uses OpenWeather APIs to deliver the weather information. The app can announce the weather using JavaScript text to speech features, where you can choose your preferred voice on the settings page. The app also provides light and dark themes but defaults to your system's theme.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To run the development server you'll first need to ensure that you have a .env (environment file) with the following vital keys OPEN_WEATHER_MAP_API_KEY, DEFAULT_LOCATION_LATITUDE, DEFAULT_LOCATION_LONGITUDE. Then you'll run the dev server by running `npm run proxy:server` and `ng s` at the same time, in different terminal windows if possible.
 
-## Code scaffolding
+## Building and running
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To build and run this app on your machine you'll need to ensure that you have a .env (environment file) with the following vital keys OPEN_WEATHER_MAP_API_KEY, DEFAULT_LOCATION_LATITUDE, DEFAULT_LOCATION_LONGITUDE. Then you'll run the app by running `npm run start:dev` or `npm run start:prod`, each command just uses a different port.
 
-## Build
+## Building and running in Docker
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To build and run this app on in docker you'll need to ensure that you have a .env (environment file) with the following vital keys OPEN_WEATHER_MAP_API_KEY, DEFAULT_LOCATION_LATITUDE, DEFAULT_LOCATION_LONGITUDE. Then you'll run the app by running `npm run doc:build` then you will run `npm run doc:run:dev` to run the Docker image locally.

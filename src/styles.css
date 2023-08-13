@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+.test-b-1 {
+    border: 1px solid red !important;
+}
+
+.test-b-2 {
+    border: 1px solid blue !important;
+}
+
+.test-b-3 {
+    border: 1px solid green !important;
+}
+
+.spinner-border.page-spinner {
+    display: block;
+    position: fixed;
+    z-index: 1031;
+    /* High z-index so it is on top of the page */
+    top: 50%;
+    right: 50%;
+}

@@ -1,0 +1,53 @@
+<app-navbar [hideSearch]="true"></app-navbar>
+<div class="container">
+    <h1 class="mb-3">Weather App Settings</h1>
+    <div class="w-50">
+        <div>
+            <label for="voiceSelection" class="form-label">Voice For Speaking Weather Update</label>
+            <select class="form-select" id="voiceSelection" [disabled]="!voices"
+            (change)="selectVoice($event)">
+                <option *ngIf="!voices">Loading voices...</option>
+                <option *ngIf="voices">Voice Name - Language</option>
+                <option *ngFor="let voice of voices; let index = index" value="{{ index }}" [selected]="selectedVoice === index">{{ voice.name}} - {{voice.lang}}</option>
+            </select>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary mt-3" (click)="saveSettings()">
+                <ng-container *ngIf="saving">
+                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                    <span role="status"> Saving...</span>
+                </ng-container>
+                <ng-container *ngIf="!saving">
+                    Save
+                </ng-container>
+            </button>
+        </div>
+        <h4>Current location data:</h4>
+        <div>
+            <label for="currentCitySelected" class="form-label">Current City Selected:</label>
+            <input *ngIf="currentCitySelected" type="text" class="form-control user-select-none" id="currentCitySelected" placeholder="City" [(ngModel)]="currentCitySelected" readonly>
+            <input *ngIf="!currentCitySelected" type="text" class="form-control user-select-none" id="currentCitySelected" placeholder="City" value="Default city selected" readonly>
+        </div>
+        <div>
+            <label for="currentCountrySelected" class="form-label">Current Country Selected:</label>
+            <select class="form-select user-select-none" id="currentCountrySelected" disabled>
+                <option *ngIf="!countries">Loading countries...</option>
+                <option *ngIf="countries">Default country selected</option>
+                <ng-container *ngIf="currentCountrySelected">
+                    <option *ngFor="let country of countries;" [selected]="currentCountrySelected === country.Code">{{ country.Name }} - {{ country.Code }}</option>
+                </ng-container>
+            </select>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-danger mt-3" (click)="clearLocationData()" [disabled]="isCurrentLocationDataNotThere()">
+                <ng-container *ngIf="clearingLocationData">
+                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                    <span role="status"> Clearing...</span>
+                </ng-container>
+                <ng-container *ngIf="!clearingLocationData">
+                    Clear current location data
+                </ng-container>
+            </button>
+        </div>
+    </div>
+</div>

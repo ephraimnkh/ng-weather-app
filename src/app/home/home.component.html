@@ -1,0 +1,54 @@
+<app-navbar (searchLocation)="searchForLocation($event)" [searchingForLocation]="searchingForLocation" ></app-navbar>
+<app-loading-spinner [loading]="loading">
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="card text-center w-50">
+                <div class="card-header">
+                    {{ todayText }}
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">{{ getLocationName() | titlecase }}</h4>
+                    <h6 class="card-title">{{ description }}</h6>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Current Temperature: {{ currentTemp }}ºC</li>
+                        <li class="list-group-item">Feels like: {{ feelsLikeTemp }}ºC</li>
+                        <li class="list-group-item">Min Temperature: {{ minTemp }}ºC</li>
+                        <li class="list-group-item">Max Temperature: {{ maxTemp }}ºC</li>
+                        <li class="list-group-item">Wind Speed: {{ windSpeed }} km/h</li>
+                        <li class="list-group-item">Humidity: {{ humidity }}%</li>
+                        <li class="list-group-item">Sunrise: {{ sunriseTime }}</li>
+                        <li class="list-group-item">Sunset: {{ sunsetTime }}</li>
+                    </ul>
+                    <button class="btn btn-primary" (click)="refresh()"><i class="bi bi-arrow-clockwise"></i> Refresh</button>
+                    <button class="btn btn-primary ms-2" (click)="speakWeather()"><i class="bi bi-megaphone-fill"></i> Announce Weather</button>
+                </div>
+                <div class="card-footer text-body-secondary">
+                    Retrieved: {{ timeWeatherDataRetrieved }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="my-5">
+            <h4>Forecast</h4>
+            <div class="row row-cols-5 flex-nowrap overflow-x-scroll gap-2 mx-3">
+                <div class="card text-center p-0" *ngFor="let weatherData of weatherForecastData;">
+                    <div class="card-header">
+                        {{ weatherData.dateText }}
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-title">{{ weatherData.description }}</h6>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Temp: {{ weatherData.temp }}ºC</li>
+                            <li class="list-group-item">Min/High: {{ weatherData.minTemp }}/{{ weatherData.maxTemp }}ºC</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        Time: {{ weatherData.time }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-loading-spinner>
+<app-error-modal [errorMessage]="errorMessage" *ngIf="errorOccurred" [show]="errorOccurred" (closed)="errorOccurred = false"></app-error-modal>

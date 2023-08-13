@@ -1,6 +1,6 @@
 {
   "name": "ng-weather-app",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,16 +8,27 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "compile-server": "npx tsc server.ts",
-    "proxy:server": "npm run compile-server && nodemon server.js",
-    "start:dev": "npm run build && npm run compile-server && pm2 start ecosystem.config.js --env development",
-    "start:prod": "npm run build && npm run compile-server && pm2 start ecosystem.config.js --env production",
-    "stop": "pm2 stop all",
+    "proxy:server": "nodemon server.ts",
+    "start:dev": "npm run build && npm run compile-server && npx pm2 start ecosystem.config.js --env development",
+    "start:prod": "npm run build && npm run compile-server && npx pm2 start ecosystem.config.js --env production",
+    "stop": "npx pm2 stop all",
+    "doc:start:dev": "npm run build && npm run compile-server && npx pm2-runtime start ecosystem.config.js --env development",
+    "doc:start:prod": "npm run build && npm run compile-server && npx pm2-runtime start ecosystem.config.js --env production",
+    "doc:stop": "npx pm2-runtime stop all",
     "update:major-version": "npx ts-node package-updater.ts major && npm run push-package-to-git",
     "update:minor-version": "npx ts-node package-updater.ts minor && npm run push-package-to-git",
     "update:patch-version": "npx ts-node package-updater.ts patch && npm run push-package-to-git",
     "push-package-to-git": "git commit package.json -m \"Updated package.json to $npm_package_version [skip ci]\" && npm run pull:git",
     "pull:git": "git pull origin",
-    "push:git": "git push origin"
+    "push:git": "git push origin",
+    "doc:build": "docker build -t ng-weather-app .",
+    "doc:build:amd64": "docker build --platform linux/amd64 -t ng-weather-app .",
+    "doc:run:dev": "docker run -dp 127.0.0.1:8080:8080 ng-weather-app"
+  },
+  "nodemonConfig": {
+    "execMap": {
+      "ts": "npx tsc server.ts && nodemon server.js"
+    }
   },
   "private": true,
   "dependencies": {
@@ -42,6 +53,7 @@
     "@angular-devkit/build-angular": "^15.2.9",
     "@angular/cli": "~15.2.9",
     "@angular/compiler-cli": "^15.2.0",
+    "@types/bootstrap": "^5.2.6",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",

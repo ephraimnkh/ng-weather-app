@@ -8,7 +8,7 @@ To run the development server you'll first need to ensure that you have a .env (
 
 ## Building and running
 
-To build and run this app on your machine you'll need to ensure that you have a .env (environment file) with the following vital keys OPEN_WEATHER_MAP_API_KEY, DEFAULT_LOCATION_LATITUDE, DEFAULT_LOCATION_LONGITUDE. Then you'll run the app by running `npm run start:dev` or `npm run start:prod`, each command just uses a different port.
+To build and run this app on your machine you'll need to ensure that you have a .env (environment file) with the following vital keys OPEN_WEATHER_MAP_API_KEY, DEFAULT_LOCATION_LATITUDE, DEFAULT_LOCATION_LONGITUDE. Then you'll run the app by running `npm run start:dev` or `npm run start:prod`, each command just uses a different port. To stop the app run `npm run stop`.
 
 ## Building and running in Docker
 

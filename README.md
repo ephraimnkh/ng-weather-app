@@ -1,6 +1,6 @@
 # Weather App
 
-This project is a weather app that provides current temperature data as well as a 3-hourly forecast for the next 5 days. It uses OpenWeather APIs to deliver the weather information. The app can announce the weather using JavaScript text to speech features, where you can choose your preferred voice on the settings page. The app also provides light and dark themes but defaults to your system's theme.
+This project is a weather app that provides current temperature data for your current physical location or another location you may search for, as well as a 3-hourly forecast for the next 5 days. It uses OpenWeather APIs to deliver the weather information. The app can announce the weather using JavaScript text to speech features, where you can choose your preferred voice on the settings page. The app also provides light and dark themes but defaults to your system's theme.
 
 ## Development server
 

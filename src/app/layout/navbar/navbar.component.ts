@@ -50,11 +50,11 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  isHomePage(): boolean {
+  get isHomePage(): boolean {
     return this.currentUrlPath === '/';
   }
   
-  isSettingsPage(): boolean {
+  get isSettingsPage(): boolean {
     return this.currentUrlPath === `/${SETTINGS_PATH}`;
   }
 

@@ -5,7 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class StorageService {
 
-  constructor() { }
+  get localStorageLength(): number {
+    return localStorage.length;
+  }
 
   storeItemInLocalStorage(key: string, item: string) {
     try {

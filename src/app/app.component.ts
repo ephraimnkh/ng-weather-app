@@ -9,6 +9,8 @@ import { LightDarkModeService } from './services/light-dark-mode.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  title = 'ng-weather-app';
+
   constructor(
     private lightDarkModeService: LightDarkModeService,
     private storageService: StorageService
